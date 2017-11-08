@@ -1,7 +1,8 @@
 import boto3
 dynamodb = boto3.resource('dynamodb',
-                          aws_access_key_id='AKIAIZJNGO7OV3FMMP7Q',
-                          aws_secret_access_key='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')
+                          region_name='us-west-2',
+                          aws_access_key_id='AKIAJ2CQZHOYGX5AB4DA',
+                          aws_secret_access_key='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')
 table = dynamodb.create_table(
     TableName='hashtags',
     KeySchema=[

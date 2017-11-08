@@ -7,12 +7,16 @@ import decimal
 
 ## Connent to the kinesis stream
 kinesis = boto3.client("kinesis",
-                       aws_access_key_id='AKIAIZJNGO7OV3FMMP7Q',
-                       aws_secret_access_key='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')
+                       region_name='us-west-2',
+                       aws_access_key_id='AKIAJ2CQZHOYGX5AB4DA',
+                       aws_secret_access_key='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')
 shard_id = 'shardId-000000000000' #only one shard
 shard_it = kinesis.get_shard_iterator(StreamName="twitter", ShardId=shard_id, ShardIteratorType="LATEST")["ShardIterator"]
 
-dynamodb = boto3.resource('dynamodb')
+dynamodb = boto3.resource('dynamodb',
+                          region_name='us-west-2',
+                          aws_access_key_id='AKIAJ2CQZHOYGX5AB4DA',
+                          aws_secret_access_key='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')
 table = dynamodb.Table('hashtags')
 
 while 1==1:
@@ -23,6 +27,7 @@ while 1==1:
             if htags:
                 for ht in htags:
                     htag = ht['text']
+                    # print(ht)
                     checkItemExists = table.get_item(
                         Key={
                             'hashtag':htag
