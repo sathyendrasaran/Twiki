@@ -8,15 +8,15 @@ import decimal
 ## Connent to the kinesis stream
 kinesis = boto3.client("kinesis",
                        region_name='us-west-2',
-                       aws_access_key_id='AKIAJ2CQZHOYGX5AB4DA',
-                       aws_secret_access_key='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')
+                       aws_access_key_id='XXXXXXXX',
+                       aws_secret_access_key='XXXXXXXX')
 shard_id = 'shardId-000000000000' #only one shard
 shard_it = kinesis.get_shard_iterator(StreamName="twitter", ShardId=shard_id, ShardIteratorType="LATEST")["ShardIterator"]
 
 dynamodb = boto3.resource('dynamodb',
                           region_name='us-west-2',
-                          aws_access_key_id='AKIAJ2CQZHOYGX5AB4DA',
-                          aws_secret_access_key='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')
+                          aws_access_key_id='XXXXXXXX',
+                          aws_secret_access_key='XXXXXXXX')
 table = dynamodb.Table('hashtags')
 
 while 1==1:
